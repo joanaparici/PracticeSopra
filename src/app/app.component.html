@@ -1,209 +1,33 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
-    <title>TerretaShop</title>
-  </head>
-  <body>
-    <div class="container">
-      <nav class="navbar navbar-expand-sm">
-        <div class="container-fluid justify-content-between">
-          <a class="navbar-brand" href="#">
-            <i class="bi bi-house-fill"></i> TerretaShop
-          </a>
-          <div class="d-flex align-items-center">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Shop</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Help</a>
-              </li>
-            </ul>
-            <button class="btn btn-secondary ms-3">
-              <i class="bi bi-cart"></i> Your Cart
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      <div class="row border-bottom">
-        <div class="col-3 border-right">
-          <div class="d-flex flex-column">
-            <button
-              class="btn btn-secondary me-5 mb-3 mt-5"
-              (click)="filterCheaper()"
-            >
-              Más económicos
-            </button>
-            <button
-              class="btn btn-secondary me-5 mb-3"
-              (click)="filterExpensive()"
-            >
-              Productos top
-            </button>
-            <button
-              class="btn btn-secondary me-5 mb-3"
-              (click)="filterPopular()"
-            >
-              Más vendidos
-            </button>
-            <button class="btn btn-secondary me-5" (click)="resetFilter()">
-              Resetear filtro
-            </button>
-            <div class="title mt-5 mb-3">
-              <h3>Products</h3>
-            </div>
-            <div *ngFor="let product of products">
-              <div
-                class="clickable d-flex flex-row justify-content-between border-bottom mb-2"
-                (click)="watchProduct(product.id)"
-              >
-                <div>
-                  <p>{{ product.product }}</p>
-                </div>
-                <i class="bi bi-caret-right-fill"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-9">
-          <div class="row border-bottom">
-            <div class="col-12 col-lg-6">
-              <img
-                src="../assets/img/{{ selectedProduct?.id }}.png"
-                alt="Tomate"
-                width="100%"
-                height="420px"
-              />
-            </div>
-            <div class="col-12 col-lg-6">
-              <div *ngIf="selectedProduct" class="d-flex flex-column mt-3">
-                <h2>{{ selectedProduct.product }}</h2>
-                <div class="d-flex flex-row mb-5 border-bottom">
-                  <i
-                    *ngFor="let star of getStarList(selectedProduct.rating)"
-                    [class]="star"
-                  ></i>
-                  <p>5 reviews</p>
-                </div>
-                <div class="price mb-5 border-bottom">
-                  <h2>{{ selectedProduct.price }}€</h2>
-                </div>
-                <div class="description border-bottom mb-5">
-                  <p>{{ selectedProduct.description }}</p>
-                </div>
-
-                <button
-                  class="btn btn-secondary me-5 px-2"
-                  (click)="deleteProduct(selectedProduct.id)"
-                >
-                  Delete item
-                </button>
-              </div>
-            </div>
-          </div>
-          <div
-            *ngIf="
-              selectedProduct &&
-              selectedProduct.similarProducts &&
-              selectedProduct.similarProducts.length > 0
-            "
-            class="row border-bottom my-3 m-2 pb-3"
-          >
-            <div class="col d-flex justify-content-center">
-              <h2>Similar Products</h2>
-            </div>
-            <div
-              *ngIf="selectedProduct"
-              class="d-flex flex-wrap justify-content-around"
-            >
-              <div
-                *ngFor="let similarProduct of selectedProduct.similarProducts"
-                class="clickable mx-5 my-5"
-              >
-                <div (click)="watchProduct(similarProduct.id)">
-                  <div>
-                    <img
-                      src="../assets/img/{{ similarProduct.id }}.png"
-                      alt="similarProducts"
-                      width="250px"
-                      height="150px"
-                    />
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <div class="d-flex flex-column">
-                      <div>
-                        <p class="mb-0">{{ similarProduct.product }}</p>
-                      </div>
-                      <div class="d-flex flex-row">
-                        <i
-                          *ngFor="
-                            let star of getStarList(similarProduct.rating)
-                          "
-                          [class]="star"
-                        ></i>
-                      </div>
-                      <div class="price">{{ similarProduct.price }}€</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            *ngIf="
-              selectedProduct &&
-              selectedProduct.reviews &&
-              selectedProduct.reviews.length > 0
-            "
-            class="row my-3"
-          >
-            <div class="d-flex justify-content-left">
-              <h2>Reviews</h2>
-            </div>
-            <div
-              *ngFor="let review of selectedProduct.reviews"
-              class="d-flex flex-column mt-4"
-            >
-              <div class="row d-flex flex-wrap mb-4">
-                <div class="col-2 border-bottom">
-                  <i class="bi bi-person-circle fs-1"></i>
-                </div>
-                <div class="col-4">
-                  <p class="mb-0">{{ review.name }}</p>
-                  <p class="mb-0">{{ review.date }}</p>
-                  <div class="d-flex flex-row">
-                    <i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i><i class="bi bi-star"></i
-                    ><i class="bi bi-star"></i>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <p>{{ review.opinion }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <br />
-        <br />
-        <br />
-      </div>
+<div class="container">
+  <app-navbar> </app-navbar>
+  <div class="row border-bottom">
+    <div class="col-3">
+      <app-sidebar
+        [products]="products"
+        (watchedProduct)="watchProduct($event)"
+        (filterCheaper)="filterCheaper()"
+        (filterExpensive)="filterExpensive()"
+        (filterPopular)="filterPopular()"
+        (filterReset)="resetFilter()"
+      ></app-sidebar>
     </div>
-  </body>
-</html>
+    <div class="col-9">
+      <app-product-details
+        *ngIf="selectedProduct"
+        [selectedProduct]="selectedProduct"
+        (deleteProduct)="deleteProduct(selectedProduct.id)"
+      ></app-product-details>
+
+      <app-similar-products
+        [selectedProduct]="selectedProduct"
+        (watchedProduct)="watchProduct($event)"
+      ></app-similar-products>
+      <app-reviews [selectedProduct]="selectedProduct"></app-reviews>
+    </div>
+  </div>
+  <div class="row">
+    <br />
+    <br />
+    <br />
+  </div>
+</div>

@@ -9,12 +9,13 @@ import { type Product } from './models/product';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  originalProducts: Product[] = productsData;
-  products: Product[] = productsData;
+  originalProducts: Product[] = [...productsData];
+  products: Product[] = [...productsData];
   selectedProduct: Product | null = null;
+  defaultProduct = 0;
 
   ngOnInit(): void {
-    this.selectedProduct = this.products[0];
+    this.selectedProduct = this.products[this.defaultProduct];
   }
 
   watchProduct(id: number): void {
@@ -28,13 +29,13 @@ export class AppComponent {
     const index = this.products.findIndex((product) => product.id === id);
     this.products = this.products.filter((product) => product.id !== id);
 
-    this.products.forEach((product) => {
-      if (product.similarProducts != null) {
-        product.similarProducts = product.similarProducts.filter(
-          (similarProduct) => similarProduct.id !== id,
-        );
-      }
-    });
+    // this.products.forEach((product) => {
+    //   if (product.similarProducts != null) {
+    //     product.similarProducts = product.similarProducts.filter(
+    //       (similarProduct) => similarProduct.id !== id,
+    //     );
+    //   }
+    // });
 
     if (this.products.length > 0) {
       this.selectedProduct = this.products[Math.max(0, index - 1)];

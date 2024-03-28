@@ -1,0 +1,30 @@
+<div class="border-right">
+  <div class="d-flex flex-column">
+    <button class="btn btn-secondary me-5 mb-3 mt-5" (click)="onFilterCheaper()">
+      Más económicos
+    </button>
+    <button class="btn btn-secondary me-5 mb-3" (click)="onFilterExpensive()">
+      Productos top
+    </button>
+    <button class="btn btn-secondary me-5 mb-3" (click)="onFilterPopular()">
+      Más vendidos
+    </button>
+    <button class="btn btn-secondary me-5" (click)="onFilterReset()">
+      Resetear filtro
+    </button>
+    <div class="title mt-5 mb-3">
+      <h3>Products</h3>
+    </div>
+    <div *ngFor="let product of products">
+      <div
+        class="clickable d-flex flex-row justify-content-between border-bottom mb-2"
+        (click)="onWatchProduct(product.id)"
+      >
+        <div>
+          <p>{{ product.product }}</p>
+        </div>
+        <i class="bi bi-caret-right-fill"></i>
+      </div>
+    </div>
+  </div>
+</div>
