@@ -174,7 +174,8 @@ textarea {
  */
 
 button,
-input { /* 1 */
+input {
+  /* 1 */
   overflow: visible;
 }
 
@@ -184,7 +185,8 @@ input { /* 1 */
  */
 
 button,
-select { /* 1 */
+select {
+  /* 1 */
   text-transform: none;
 }
 
@@ -348,16 +350,20 @@ template {
   display: none;
 }
 
-
-img{
+img {
   object-fit: cover;
   object-position: center;
 }
 
-.clickable{
+.clickable {
   cursor: pointer;
 }
 
-.container{
+.container {
   min-width: 100% !important;
+}
+
+.active-filter {
+  background-color: blue;
+  color: white;
 }

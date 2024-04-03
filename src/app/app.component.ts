@@ -13,6 +13,7 @@ export class AppComponent {
   products: Product[] = [...productsData];
   selectedProduct: Product | null = null;
   defaultProduct = 0;
+  activeFilter: string = '';
 
   ngOnInit(): void {
     this.selectedProduct = this.products[this.defaultProduct];
@@ -29,14 +30,6 @@ export class AppComponent {
     const index = this.products.findIndex((product) => product.id === id);
     this.products = this.products.filter((product) => product.id !== id);
 
-    // this.products.forEach((product) => {
-    //   if (product.similarProducts != null) {
-    //     product.similarProducts = product.similarProducts.filter(
-    //       (similarProduct) => similarProduct.id !== id,
-    //     );
-    //   }
-    // });
-
     if (this.products.length > 0) {
       this.selectedProduct = this.products[Math.max(0, index - 1)];
     } else {
@@ -44,42 +37,40 @@ export class AppComponent {
     }
   }
 
-  getStarList(rating: number): string[] {
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      if (rating >= i) {
-        stars.push('bi-star-fill');
-      } else if (rating >= i - 0.5) {
-        stars.push('bi-star-half');
-      } else {
-        stars.push('bi-star');
-      }
-    }
-    return stars;
-  }
-
   filterCheaper(): void {
-    this.resetFilter();
+    this.activeFilter = this.activeFilter === 'cheaper' ? '' : 'cheaper';
+    console.log(this.activeFilter);
     this.products = this.originalProducts.filter(
       (product) => product.price < 2000,
     );
   }
 
   filterExpensive(): void {
-    this.resetFilter();
+    this.activeFilter = this.activeFilter === 'expensive' ? '' : 'expensive';
     this.products = this.originalProducts.filter(
       (product) => product.price > 2000,
     );
   }
 
   filterPopular(): void {
-    this.resetFilter();
+    this.activeFilter = this.activeFilter === 'popular' ? '' : 'popular';
     this.products = this.originalProducts.filter(
       (product) => product.rating >= 4.5,
     );
   }
 
-  resetFilter(): void {
+  filterReset(): void {
+    this.activeFilter = '';
     this.products = this.originalProducts;
+  }
+
+  changeFavorite(): void {
+    if (this.selectedProduct != null) {
+      this.selectedProduct.favorite = !this.selectedProduct.favorite;
+    }
+  }
+
+  filterChanged(newFilter: string): void {
+    this.activeFilter = newFilter;
   }
 }

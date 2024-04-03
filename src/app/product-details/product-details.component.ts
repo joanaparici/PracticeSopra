@@ -9,22 +9,13 @@ import { type Product } from '../models/product';
 export class ProductDetailsComponent {
   @Input() selectedProduct: Product | null = null;
   @Output() deleteProduct = new EventEmitter<number>();
-
-  getStarList(rating: number): string[] {
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      if (rating >= i) {
-        stars.push('bi-star-fill');
-      } else if (rating >= i - 0.5) {
-        stars.push('bi-star-half');
-      } else {
-        stars.push('bi-star');
-      }
-    }
-    return stars;
-  }
+  @Output() changeFavorite = new EventEmitter<void>();
 
   onDeleteProduct(id: number): void {
     this.deleteProduct.emit(id);
+  }
+
+  onChangeFavorite(): void {
+    this.changeFavorite.emit();
   }
 }

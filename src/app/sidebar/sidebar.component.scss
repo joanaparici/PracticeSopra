@@ -10,3 +10,13 @@ img{
   .container{
     min-width: 100% !important;
   }
+
+  .selected-product{
+    color: rgb(33, 108, 221);
+  }
+
+  .active-filter {
+    background-color: blue;
+    color: white;
+  }
+  

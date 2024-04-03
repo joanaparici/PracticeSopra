@@ -9,7 +9,8 @@ export const productsData: Product[] = [
     id: 0,
     price: 1000,
     currency: '€',
-    rating: 4.8,
+    rating: 3.9,
+    favorite: false,
     description:
       'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.',
     similarProducts: [
@@ -19,6 +20,7 @@ export const productsData: Product[] = [
         price: 4000,
         currency: '$',
         rating: 2.8,
+        favorite: false,
         description:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.',
       },
@@ -28,6 +30,7 @@ export const productsData: Product[] = [
         price: 200,
         currency: '€',
         rating: 3.5,
+        favorite: false,
         description:
           'Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. ',
       },
@@ -37,6 +40,7 @@ export const productsData: Product[] = [
         price: 1500,
         currency: '€',
         rating: 4.5,
+        favorite: false,
         description: 'Un queso con un sabor intenso y textura firme.',
       },
     ],
@@ -65,6 +69,7 @@ export const productsData: Product[] = [
     price: 4000,
     currency: '$',
     rating: 2.8,
+    favorite: true,
     description:
       'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.',
     similarProducts: [
@@ -74,6 +79,7 @@ export const productsData: Product[] = [
         price: 200,
         currency: '€',
         rating: 3.5,
+        favorite: false,
         description:
           'Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. ',
       },
@@ -83,6 +89,7 @@ export const productsData: Product[] = [
         price: 2500,
         currency: '€',
         rating: 5,
+        favorite: false,
         description:
           'Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.',
       },
@@ -92,6 +99,7 @@ export const productsData: Product[] = [
         price: 1000,
         currency: '€',
         rating: 4.8,
+        favorite: false,
         description:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.',
       },
@@ -121,6 +129,7 @@ export const productsData: Product[] = [
     price: 2500,
     currency: '€',
     rating: 5,
+    favorite: false,
     description:
       'Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.',
     similarProducts: [
@@ -130,6 +139,7 @@ export const productsData: Product[] = [
         price: 200,
         currency: '€',
         rating: 3.5,
+        favorite: false,
         description:
           'Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. ',
       },
@@ -139,6 +149,7 @@ export const productsData: Product[] = [
         price: 500,
         currency: '€',
         rating: 4.2,
+        favorite: false,
         description: 'Aceitunas jugosas y llenas de sabor.',
       },
       {
@@ -147,6 +158,7 @@ export const productsData: Product[] = [
         price: 1000,
         currency: '€',
         rating: 4.8,
+        favorite: false,
         description:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.',
       },
@@ -175,7 +187,8 @@ export const productsData: Product[] = [
     id: 3,
     price: 200,
     currency: '€',
-    rating: 3.5,
+    rating: 3.1,
+    favorite: false,
     description:
       'Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. ',
     similarProducts: [
@@ -185,6 +198,7 @@ export const productsData: Product[] = [
         price: 500,
         currency: '€',
         rating: 4.2,
+        favorite: false,
         description: 'Aceitunas jugosas y llenas de sabor.',
       },
     ],
@@ -204,7 +218,8 @@ export const productsData: Product[] = [
     id: 4,
     price: 1500,
     currency: '€',
-    rating: 4.5,
+    rating: 3,
+    favorite: false,
     description: 'Un queso con un sabor intenso y textura firme.',
     similarProducts: [
       {
@@ -213,6 +228,7 @@ export const productsData: Product[] = [
         price: 200,
         currency: '€',
         rating: 3.5,
+        favorite: false,
         description:
           'Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. ',
       },
@@ -222,6 +238,7 @@ export const productsData: Product[] = [
         price: 300,
         currency: '€',
         rating: 4.8,
+        favorite: false,
         description: 'Naranjas frescas y llenas de zumo.',
       },
       {
@@ -230,6 +247,7 @@ export const productsData: Product[] = [
         price: 1000,
         currency: '€',
         rating: 4.8,
+        favorite: false,
         description:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.',
       },
@@ -258,7 +276,8 @@ export const productsData: Product[] = [
     id: 5,
     price: 500,
     currency: '€',
-    rating: 4.2,
+    rating: 2.2,
+    favorite: false,
     description: 'Aceitunas jugosas y llenas de sabor.',
     similarProducts: [
       {
@@ -267,6 +286,7 @@ export const productsData: Product[] = [
         price: 200,
         currency: '€',
         rating: 3.5,
+        favorite: false,
         description:
           'Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. ',
       },
@@ -276,6 +296,7 @@ export const productsData: Product[] = [
         price: 2500,
         currency: '€',
         rating: 5,
+        favorite: false,
         description:
           'Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.',
       },
@@ -285,6 +306,7 @@ export const productsData: Product[] = [
         price: 1000,
         currency: '€',
         rating: 4.8,
+        favorite: false,
         description:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.',
       },
@@ -296,7 +318,8 @@ export const productsData: Product[] = [
     id: 6,
     price: 300,
     currency: '€',
-    rating: 4.8,
+    rating: 4,
+    favorite: false,
     description: 'Naranjas frescas y llenas de zumo.',
     similarProducts: [
       {
@@ -305,6 +328,7 @@ export const productsData: Product[] = [
         price: 200,
         currency: '€',
         rating: 3.5,
+        favorite: false,
         description:
           'Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. ',
       },
@@ -314,6 +338,7 @@ export const productsData: Product[] = [
         price: 1000,
         currency: '€',
         rating: 4.8,
+        favorite: false,
         description:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.',
       },

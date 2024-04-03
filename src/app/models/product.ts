@@ -6,6 +6,7 @@ export interface Product {
   price: number;
   currency: string;
   rating: number;
+  favorite: boolean;
   description: string;
   similarProducts?: Product[];
   reviews?: Review[] | null;

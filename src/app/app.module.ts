@@ -9,7 +9,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { SimilarProductsComponent } from './similar-products/similar-products.component';
 import { ReviewsComponent } from './reviews/reviews.component';
-import { ProductListComponent } from './product-list/product-list.component';
+import { StarsRatingComponent } from './stars-rating/stars-rating.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { ProductListComponent } from './product-list/product-list.component';
     ProductDetailsComponent,
     SimilarProductsComponent,
     ReviewsComponent,
-    ProductListComponent,
+    StarsRatingComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

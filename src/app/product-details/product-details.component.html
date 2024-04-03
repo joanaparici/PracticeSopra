@@ -1,5 +1,5 @@
 <div class="row border-bottom">
-  <div class="col-12 col-lg-6">
+  <div class="col-12 col-lg-6 p-0">
     <img
       src="../assets/img/{{ selectedProduct?.id }}.png"
       alt="Tomate"
@@ -9,13 +9,16 @@
   </div>
   <div class="col-12 col-lg-6">
     <div *ngIf="selectedProduct" class="d-flex flex-column mt-3">
-      <h2>{{ selectedProduct.product }}</h2>
-      <div class="d-flex flex-row mb-5 border-bottom">
+      <h2>
+        {{ selectedProduct.product }}
         <i
-          *ngFor="let star of getStarList(selectedProduct.rating)"
-          [class]="star"
+          class="bi"
+          [ngClass]="selectedProduct.favorite ? 'bi-heart-fill' : 'bi-heart'"
+          (click)="onChangeFavorite()"
         ></i>
-        <p>5 reviews</p>
+      </h2>
+      <div class="d-flex flex-row mb-5 border-bottom">
+        <app-stars-rating [rating]="selectedProduct.rating"></app-stars-rating>
       </div>
       <div class="price mb-5 border-bottom">
         <h2>{{ selectedProduct.price }}€</h2>

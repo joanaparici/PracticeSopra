@@ -2,20 +2,32 @@
   <app-navbar> </app-navbar>
   <div class="row border-bottom">
     <div class="col-3">
+      <div>Active Filter: {{ activeFilter }}</div>
       <app-sidebar
         [products]="products"
+        [selectedProduct]="selectedProduct"
+        [activeFilter]="activeFilter"
         (watchedProduct)="watchProduct($event)"
         (filterCheaper)="filterCheaper()"
         (filterExpensive)="filterExpensive()"
         (filterPopular)="filterPopular()"
-        (filterReset)="resetFilter()"
+        (filterReset)="filterReset()"
+        (filterChanged)="filterChanged($event)"
       ></app-sidebar>
     </div>
-    <div class="col-9">
+    <div
+      class="col-9"
+      [ngStyle]="{
+        'background-color': selectedProduct?.favorite
+          ? '#9b9b9b'
+          : 'transparent'
+      }"
+    >
       <app-product-details
         *ngIf="selectedProduct"
         [selectedProduct]="selectedProduct"
         (deleteProduct)="deleteProduct(selectedProduct.id)"
+        (changeFavorite)="changeFavorite()"
       ></app-product-details>
 
       <app-similar-products

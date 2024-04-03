@@ -1,12 +1,24 @@
 <div class="border-right">
   <div class="d-flex flex-column">
-    <button class="btn btn-secondary me-5 mb-3 mt-5" (click)="onFilterCheaper()">
+    <button
+      class="btn btn-secondary me-5 mb-3 mt-5"
+      [ngClass]="{ 'active-filter': activeFilter === 'cheaper' }"
+      (click)="onFilterCheaper()"
+    >
       Más económicos
     </button>
-    <button class="btn btn-secondary me-5 mb-3" (click)="onFilterExpensive()">
+    <button
+      class="btn btn-secondary me-5 mb-3"
+      [ngClass]="{ 'active-filter': activeFilter === 'expensive' }"
+      (click)="onFilterExpensive()"
+    >
       Productos top
     </button>
-    <button class="btn btn-secondary me-5 mb-3" (click)="onFilterPopular()">
+    <button
+      class="btn btn-secondary me-5 mb-3"
+      [ngClass]="{ 'active-filter': activeFilter === 'popular' }"
+      (click)="onFilterPopular()"
+    >
       Más vendidos
     </button>
     <button class="btn btn-secondary me-5" (click)="onFilterReset()">
@@ -18,6 +30,7 @@
     <div *ngFor="let product of products">
       <div
         class="clickable d-flex flex-row justify-content-between border-bottom mb-2"
+        [ngClass]="{ 'selected-product': selectedProduct?.id === product.id }"
         (click)="onWatchProduct(product.id)"
       >
         <div>
