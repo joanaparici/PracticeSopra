@@ -28,4 +28,8 @@ export class StarsRatingComponent {
     const color = rating < 3 ? 'red' : rating < 4 ? 'orange' : 'green';
     return color;
   }
+
+  changeRating(newRating: number): void {
+    this.rating = newRating;
+  }
 }

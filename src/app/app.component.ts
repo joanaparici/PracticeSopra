@@ -1,14 +1,12 @@
-// import { type HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { productsData } from './products';
 import { type Product } from './models/product';
 
-/* eslint-disable prettier/prettier */
-type Filters = 'cheaper' | 'expensive' | 'popular' | 'reset';
+// type Filters = 'cheaper' | 'expensive' | 'popular' | 'reset';
 
-type FilterType = {
-  [key in Filters]: () => void;
-};
+// type FilterType = {
+//   [key in Filters]: () => void;
+// };
 
 @Component({
   selector: 'app-root',
@@ -22,34 +20,79 @@ export class AppComponent {
   defaultProduct = 0;
   activeFilter = '';
 
-  public filters: FilterType = {
-    cheaper: () => {
-      this.filterCheaper();
-    },
-    expensive: () => {
-      this.filterExpensive();
-    },
-    popular: () => {
-      this.filterPopular();
-    },
-    reset: () => {
-      this.filterReset();
-    },
+  ngOnInit(): void {
+    this.selectedProduct = this.products[this.defaultProduct];
+  }
+
+  // public filters: FilterType = {
+  //   cheaper: () => {
+  //     this.filterCheaper();
+  //   },
+  //   expensive: () => {
+  //     this.filterExpensive();
+  //   },
+  //   popular: () => {
+  //     this.filterPopular();
+  //   },
+  //   reset: () => {
+  //     this.filterReset();
+  //   },
+  // };
+
+  // filterChanged(newFilter: string): void {
+  //   const isSelected = this.activeFilter === newFilter;
+  //   this.activeFilter = newFilter;
+  //   if (isSelected) {
+  //     this.activeFilter = '';
+  //     this.filterReset();
+  //     return;
+  //   }
+  //   this.filters[newFilter as Filters]();
+  // }
+
+  // filterCheaper(): void {
+  //   this.products = this.originalProducts.filter(
+  //     (product) => product.price < 2000,
+  //   );
+  // }
+
+  // filterExpensive(): void {
+  //   this.products = this.originalProducts.filter(
+  //     (product) => product.price > 2000,
+  //   );
+  // }
+
+  // filterPopular(): void {
+  //   this.products = this.originalProducts.filter(
+  //     (product) => product.rating >= 4.5,
+  //   );
+  // }
+
+  // private filterReset(): void {
+  //   this.activeFilter = '';
+  //   this.products = this.originalProducts;
+  // }
+
+  private readonly filterActions = {
+    cheaper: () =>
+      this.originalProducts.filter((product) => product.price < 2000),
+    expensive: () =>
+      this.originalProducts.filter((product) => product.price > 2000),
+    popular: () =>
+      this.originalProducts.filter((product) => product.rating >= 4.5),
+    reset: () => [...this.originalProducts],
   };
 
   filterChanged(newFilter: string): void {
-    const isSelected = this.activeFilter === newFilter;
-    this.activeFilter = newFilter;
-    if (isSelected) {
+    if (this.activeFilter === newFilter) {
       this.activeFilter = '';
-      this.filterReset();
+      this.products = this.filterActions.reset();
       return;
     }
-    this.filters[newFilter as Filters]();
-  }
-
-  ngOnInit(): void {
-    this.selectedProduct = this.products[this.defaultProduct];
+    this.activeFilter = newFilter;
+    const action =
+      this.filterActions[newFilter as keyof typeof this.filterActions];
+    this.products = action();
   }
 
   watchProduct(id: number): void {
@@ -68,29 +111,6 @@ export class AppComponent {
     } else {
       this.selectedProduct = null;
     }
-  }
-
-  filterCheaper(): void {
-    this.products = this.originalProducts.filter(
-      (product) => product.price < 2000,
-    );
-  }
-
-  filterExpensive(): void {
-    this.products = this.originalProducts.filter(
-      (product) => product.price > 2000,
-    );
-  }
-
-  filterPopular(): void {
-    this.products = this.originalProducts.filter(
-      (product) => product.rating >= 4.5,
-    );
-  }
-
-  private filterReset(): void {
-    this.activeFilter = '';
-    this.products = this.originalProducts;
   }
 
   changeFavorite(): void {
