@@ -3,25 +3,25 @@
     <button
       class="btn btn-secondary me-5 mb-3 mt-5"
       [ngClass]="{ 'active-filter': activeFilter === 'cheaper' }"
-      (click)="onFilterCheaper()"
+      (click)="onFilter('cheaper')"
     >
       Más económicos
     </button>
     <button
       class="btn btn-secondary me-5 mb-3"
       [ngClass]="{ 'active-filter': activeFilter === 'expensive' }"
-      (click)="onFilterExpensive()"
+      (click)="onFilter('expensive')"
     >
       Productos top
     </button>
     <button
       class="btn btn-secondary me-5 mb-3"
       [ngClass]="{ 'active-filter': activeFilter === 'popular' }"
-      (click)="onFilterPopular()"
+      (click)="onFilter('popular')"
     >
       Más vendidos
     </button>
-    <button class="btn btn-secondary me-5" (click)="onFilterReset()">
+    <button class="btn btn-secondary me-5" (click)="onFilter('reset')">
       Resetear filtro
     </button>
     <div class="title mt-5 mb-3">

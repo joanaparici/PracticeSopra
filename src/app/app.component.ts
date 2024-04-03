@@ -3,6 +3,13 @@ import { Component } from '@angular/core';
 import { productsData } from './products';
 import { type Product } from './models/product';
 
+/* eslint-disable prettier/prettier */
+type Filters = 'cheaper' | 'expensive' | 'popular' | 'reset';
+
+type FilterType = {
+  [key in Filters]: () => void;
+};
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,7 +20,33 @@ export class AppComponent {
   products: Product[] = [...productsData];
   selectedProduct: Product | null = null;
   defaultProduct = 0;
-  activeFilter: string = '';
+  activeFilter = '';
+
+  public filters: FilterType = {
+    cheaper: () => {
+      this.filterCheaper();
+    },
+    expensive: () => {
+      this.filterExpensive();
+    },
+    popular: () => {
+      this.filterPopular();
+    },
+    reset: () => {
+      this.filterReset();
+    },
+  };
+
+  filterChanged(newFilter: string): void {
+    const isSelected = this.activeFilter === newFilter;
+    this.activeFilter = newFilter;
+    if (isSelected) {
+      this.activeFilter = '';
+      this.filterReset();
+      return;
+    }
+    this.filters[newFilter as Filters]();
+  }
 
   ngOnInit(): void {
     this.selectedProduct = this.products[this.defaultProduct];
@@ -38,28 +71,24 @@ export class AppComponent {
   }
 
   filterCheaper(): void {
-    this.activeFilter = this.activeFilter === 'cheaper' ? '' : 'cheaper';
-    console.log(this.activeFilter);
     this.products = this.originalProducts.filter(
       (product) => product.price < 2000,
     );
   }
 
   filterExpensive(): void {
-    this.activeFilter = this.activeFilter === 'expensive' ? '' : 'expensive';
     this.products = this.originalProducts.filter(
       (product) => product.price > 2000,
     );
   }
 
   filterPopular(): void {
-    this.activeFilter = this.activeFilter === 'popular' ? '' : 'popular';
     this.products = this.originalProducts.filter(
       (product) => product.rating >= 4.5,
     );
   }
 
-  filterReset(): void {
+  private filterReset(): void {
     this.activeFilter = '';
     this.products = this.originalProducts;
   }
@@ -68,9 +97,5 @@ export class AppComponent {
     if (this.selectedProduct != null) {
       this.selectedProduct.favorite = !this.selectedProduct.favorite;
     }
-  }
-
-  filterChanged(newFilter: string): void {
-    this.activeFilter = newFilter;
   }
 }

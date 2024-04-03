@@ -8,11 +8,7 @@
         [selectedProduct]="selectedProduct"
         [activeFilter]="activeFilter"
         (watchedProduct)="watchProduct($event)"
-        (filterCheaper)="filterCheaper()"
-        (filterExpensive)="filterExpensive()"
-        (filterPopular)="filterPopular()"
-        (filterReset)="filterReset()"
-        (filterChanged)="filterChanged($event)"
+        (filterSelected)="filterChanged($event)"
       ></app-sidebar>
     </div>
     <div
