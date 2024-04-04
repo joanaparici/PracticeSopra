@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 
-import { type Product } from './models/product';
+import { type Product } from './modules/home/models/product';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const productsData: Product[] = [
