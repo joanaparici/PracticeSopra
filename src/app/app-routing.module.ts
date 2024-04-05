@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, type Routes } from '@angular/router';
+import { passwordGuard } from './modules/shared/guards/password.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,6 +16,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/about/about.module').then((m) => m.AboutModule),
   },
+  {
+    path: 'help',
+    // eslint-disable-next-line @typescript-eslint/promise-function-async
+    loadChildren: () =>
+      import('./modules/help/help.module').then((m) => m.HelpModule),
+    canActivate: [passwordGuard],
+  },
+  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({
