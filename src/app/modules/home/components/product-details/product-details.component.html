@@ -27,12 +27,22 @@
         <p>{{ selectedProduct.description }}</p>
       </div>
 
-      <button
-        class="btn btn-secondary me-5 px-2"
-        (click)="onDeleteProduct(selectedProduct.id)"
-      >
-        Delete item
-      </button>
+      <div class="d-flex flex-row">
+        <button
+          class="btn btn-secondary me-5 px-5"
+          (click)="onDeleteProduct(selectedProduct.id)"
+        >
+          Delete item
+        </button>
+
+        <button
+          class="btn px-5"
+          [ngClass]="isSelectedProductOnCart ? 'btn-primary' : 'btn-success'"
+          (click)="onAddProductToCart()"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
     </div>
   </div>
 </div>

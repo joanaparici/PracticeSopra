@@ -19,7 +19,7 @@
       </div>
       <div class="col-4">
         <p class="mb-0">{{ review.name }}</p>
-        <p class="mb-0">{{ review.date }}</p>
+        <p class="mb-0">{{ review.date| date: 'dd-MM-yyyy HH:ss' }}</p>
         <div class="d-flex flex-row">
           <app-stars-rating
             [rating]="selectedProduct.rating"

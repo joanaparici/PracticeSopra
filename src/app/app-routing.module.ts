@@ -23,7 +23,6 @@ const routes: Routes = [
       import('./modules/help/help.module').then((m) => m.HelpModule),
     canActivate: [passwordGuard],
   },
-  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({

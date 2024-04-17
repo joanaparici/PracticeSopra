@@ -3,5 +3,5 @@ export interface Review {
   name: string;
   rating: number;
   opinion: string;
-  date: string;
+  date: Date;
 }

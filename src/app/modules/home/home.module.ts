@@ -10,6 +10,7 @@ import {
   SimilarProductsComponent,
   StarsRatingComponent,
 } from './components';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {
     SimilarProductsComponent,
     StarsRatingComponent,
     ReviewsComponent,
+    CartComponent,
   ],
   imports: [CommonModule, HomeRoutingModule],
 })

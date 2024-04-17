@@ -8,7 +8,12 @@ import { AboutSectionComponent } from './components/about-section/about-section.
 import { FooterAboutComponent } from './components/footer-about/footer-about.component';
 
 @NgModule({
-  declarations: [AboutPageComponent, SubscribeComponent, AboutSectionComponent, FooterAboutComponent],
+  declarations: [
+    AboutPageComponent,
+    SubscribeComponent,
+    AboutSectionComponent,
+    FooterAboutComponent,
+  ],
   imports: [CommonModule, AboutRoutingModule],
 })
 export class AboutModule {}

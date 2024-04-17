@@ -17,8 +17,10 @@
     <app-product-details
       *ngIf="selectedProduct"
       [selectedProduct]="selectedProduct"
+      [isSelectedProductOnCart]="isSelectedProductOnCart"
       (deleteProduct)="deleteProduct(selectedProduct.id)"
       (changeFavorite)="changeFavorite()"
+      (addProductToCart)="addProductToCart(selectedProduct)"
     ></app-product-details>
 
     <app-similar-products
